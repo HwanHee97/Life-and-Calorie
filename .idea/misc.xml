@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/LHH/android_LHH/Life-and-Calorie/app/src/main/res/layout/activity_main.xml" value="0.253125" />
+        <entry key="..\:/LHH/android_LHH/Life-and-Calorie/communityblog/src/main/res/layout/activity_addpage.xml" value="0.22" />
+        <entry key="..\:/LHH/android_LHH/Life-and-Calorie/communityblog/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/LHH/android_LHH/Life-and-Calorie/communityblog/src/main/res/layout/activity_show_writing.xml" value="0.253125" />
+        <entry key="..\:/LHH/android_LHH/Life-and-Calorie/communityblog/src/main/res/layout/recycler_item.xml" value="0.29957805907172996" />
+        <entry key="..\:/LHH/android_LHH/test_DB2/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/LHH/android_LHH/test_DB2/communityblog/src/main/res/layout/activity_main.xml" value="0.14266304347826086" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
