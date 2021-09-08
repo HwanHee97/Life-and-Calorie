@@ -57,31 +57,31 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
 
-    public void Show_CommunityList() {//디비에서 인덱스-10 으로 10개씩만 가져올것임
+
+
+    public void Show_CommunityList() {//커뮤니티 글가져오는 함수
         task = new CONN_SERVER_COMMUNITY();
         try {
-            make_communityArraryList(task.execute("select").get());
+            make_communityArraryList(task.execute("show").get());
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-
     public void make_communityArraryList(String str_json) {
-
         Log.i("lhh", " <<<<<데이터 json->Arrarylist>>>> ");
         try {
             int count = 0;
-            JSONArray jarray = new JSONObject(str_json).getJSONArray("List");//result라는 json형식의 문자열을 json객체로 만들고 json배열로 만든다.
+            JSONArray jarray = new JSONObject(str_json).getJSONArray("List");//str_json라는 json형식의 문자열을 json객체로 만들고 json배열로 만든다.
             while (jarray != null) {
                 JSONObject jsonObject = jarray.getJSONObject(count);
 //
                 String _ID = jsonObject.getString("_ID");//키값 맞춰서 읽어들임
-                String title = jsonObject.getString("TITLE");//키값 맞춰서 읽어들임
+                String title = jsonObject.getString("TITLE");
                 String text = jsonObject.getString("TEXT");
                 String date = jsonObject.getString("DATE");
-                String writer_ID = jsonObject.getString("writer_ID");
+                String writer_ID = jsonObject.getString("WRITER_ID");
                 community_List.add(new RecyclerItem(_ID, title, text, date, writer_ID));
                 count++;
             }
@@ -92,11 +92,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void add(View v) {//추가하기 위한 페이지로 넘어감
+    public void add(View v) {//리사이클러 뷰(글) 추가하기 위한 페이지로 넘어감
         Intent intent = new Intent(MainActivity.this, AddPage.class);
         startActivityForResult(intent, REQUEST_CODE_ADD);
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {//추가하려는 글을 리스트에 추가
         super.onActivityResult(requestCode, resultCode, data);
@@ -104,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 RecyclerItem tmp_item = (RecyclerItem) data.getSerializableExtra("community_item");
                 community_List.add(tmp_item);
+                task = new CONN_SERVER_COMMUNITY();
+                task.execute("community_insert",tmp_item.getTitle(),tmp_item.getText(), tmp_item.getWriter_ID());
                 RecyclerAdapter.notifyDataSetChanged();
             }
         }

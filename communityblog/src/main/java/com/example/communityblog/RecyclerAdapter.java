@@ -28,7 +28,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         context = parent.getContext() ;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) ;
 
-        View view = inflater.inflate(R.layout.recycler_item, parent, false) ;
+        View view = inflater.inflate(R.layout.recycler_item_layout, parent, false) ;
         RecyclerAdapter.ViewHolder vh = new RecyclerAdapter.ViewHolder(view);
         return vh;
     }
