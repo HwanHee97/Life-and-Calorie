@@ -4,8 +4,8 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
+        maven { url 'https://jitpack.io' }
     }
 }
-rootProject.name = "test_DB2"
+rootProject.name = "Team_Project"
 include ':app'
-include ':communityblog'
