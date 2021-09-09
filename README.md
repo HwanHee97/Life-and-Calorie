@@ -1,5 +1,13 @@
-#모듈 정보
-# foodServer_testapp (app)
-  데이터 서버와 통신하는 테스트 앱
-# communityblog
-  recyclerview 사용한 게시판 
+#패키지 정보
+
+# main
+  기능별 페이지 전환 fragment
+
+# community
+  게시판 기능
+  
+# calendar_fragment
+  달력에 칼로리 표시 기능
+  
+# userpage
+  사용자 페이지 기능
