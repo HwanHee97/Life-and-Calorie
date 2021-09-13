@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.test_db2">
-    <uses-permission android:name="android.permission.INTERNET"/>
+    package="com.example.team_project">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Calorie &amp; Life"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Test_DB2"
+        android:theme="@style/Theme.Team_Project"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".MainActivity"
+            android:name=".userpage.MyYearMonthPickerDialog"
+            android:exported="true" />
+        <activity
+            android:name=".userpage.BookMarkFragment"
+            android:exported="true" />
+        <activity
+            android:name=".userpage.CalorieFragment"
+            android:exported="true" />
+        <activity
+            android:name=".userpage.WeightFragment"
+            android:exported="true" />
+        <activity
+            android:name=".customdialog"
+            android:exported="true" />
+        <activity
+            android:name=".userpage.UserActivity"
+            android:exported="true" />
+        <activity
+            android:name=".main.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +39,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".main.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".main.MainActivity"
+            android:exported="true" />
+        <activity android:name=".community.ShowWriting" />
+        <activity android:name=".community.AddPage" />
     </application>
 
 </manifest>
