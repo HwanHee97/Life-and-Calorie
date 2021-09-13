@@ -37,7 +37,9 @@ public class MainFragment extends Fragment {
     ListView list;
     EditText et_search;
     CONN_SERVER task;
-    ImageView iv_search;
+    ImageView fragment_iv_search;
+    MySQLiteOpenHelper dbHelper;
+    SQLiteDatabase mdb;
     //커서
     Cursor mCursor;
 
@@ -65,14 +67,14 @@ public class MainFragment extends Fragment {
         //키보드 내리기를 위한 객체 생성
         InputMethodManager mInputMethodManager = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         //food_bookmark.db 파일이 있으면 오픈, 없으면 생성 후 오픈
-        MySQLiteOpenHelper dbHelper = new MySQLiteOpenHelper(getContext(), "food_bookmark.db", null, 1);
+        dbHelper = new MySQLiteOpenHelper(getContext(), "LifeAndCalorie.db", null, 1);
         //읽고 쓰기가 가능한 SQLiteDatabase 객체를 반환한다.
-        SQLiteDatabase mdb = dbHelper.getWritableDatabase();
-
+        mdb = dbHelper.getWritableDatabase();
+        dbHelper.onCreate(mdb);
         //프래그먼트 메인을 인플레이트해주고 컨테이너에 붙여달라는 뜻임
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         et_search = (EditText) view.findViewById(R.id.et_search);
-        iv_search = (ImageView) view.findViewById(R.id.iv_search);
+        fragment_iv_search = (ImageView) view.findViewById(R.id.fragment_iv_search);
         al_food = new ArrayList<Food>();
         aa_food = new FoodAdapter(getContext(), R.layout.row, R.id.tv_foodname, al_food);
         list = (ListView) view.findViewById(R.id.list);
@@ -98,7 +100,7 @@ public class MainFragment extends Fragment {
         });
 
         //찾고자 하는 음식을 입력하고 돋보기 버튼 클릭 시
-        iv_search.setOnClickListener(new View.OnClickListener() {
+        fragment_iv_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //키패드를 내리지 않으면 ListView가 뜨지 않아서 Fragment에서의 키보드 내리기 함수 적용

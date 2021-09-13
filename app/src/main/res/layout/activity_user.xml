@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#D0DD97">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,23 +37,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
 
-            <Button
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="즐겨찾기 항목"
-                android:id="@+id/btn_bookmark"
+                android:id="@+id/user_iv_bookmark"
+                android:src="@drawable/ic_baseline_bookmark_border_40"
                 android:layout_weight="1"/>
-            <Button
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="칼로리 그래프"
-                android:id="@+id/btn_calorie"
+                android:id="@+id/user_iv_calorie"
+                android:src="@drawable/ic_baseline_show_chart_40"
                 android:layout_weight="1"/>
-            <Button
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="몸무게 그래프"
-                android:id="@+id/btn_weight"
+                android:id="@+id/user_iv_weight"
+                android:src="@drawable/ic_baseline_insert_chart_outlined_40"
                 android:layout_weight="1"/>
         </LinearLayout>
 

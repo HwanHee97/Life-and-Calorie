@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,13 +26,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     Context context;
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tv_food, tv_calorie;
-        Button btn_Remove;
+        ImageView iv_remove;
         ViewHolder(View itemView){
             super(itemView);
             tv_food = itemView.findViewById(R.id.tv_food);
             tv_calorie = itemView.findViewById(R.id.tv_calorie);
-            btn_Remove = itemView.findViewById(R.id.btn_remove);
-            btn_Remove.setOnClickListener(new View.OnClickListener() {
+            iv_remove = itemView.findViewById(R.id.iv_remove);
+            iv_remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int pos = getAdapterPosition();

@@ -21,8 +21,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
-                android:id="@+id/iv_search"
+                android:id="@+id/fragment_iv_search"
                 android:src="@drawable/magnifier"
+                android:backgroundTint="#F8FAE4"
                 android:onClick="onSearch"/>
         </LinearLayout>
         <ScrollView

@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="1500kcal"
+            android:text=""
             android:textAlignment="center" />
 
         <TextView
@@ -84,7 +84,7 @@
             android:id="@+id/tv_calorie_remaining_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="400kcal"
+            android:text=""
             android:textAlignment="center" />
       </LinearLayout>
 

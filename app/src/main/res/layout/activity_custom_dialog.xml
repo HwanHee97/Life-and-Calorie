@@ -32,7 +32,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="현재 몸무게 100kg"
+            android:text="현재 몸무게"
             android:textSize="20dp" />
 
         <EditText
@@ -41,7 +41,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
 
-            android:inputType="number" />
+            android:inputType="numberDecimal" />
     </LinearLayout>
 
     <LinearLayout

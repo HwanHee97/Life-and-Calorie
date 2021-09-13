@@ -12,21 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Team_Project"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".userpage.MyYearMonthPickerDialog"
-            android:exported="true" />
-        <activity
-            android:name=".userpage.BookMarkFragment"
-            android:exported="true" />
-        <activity
-            android:name=".userpage.CalorieFragment"
-            android:exported="true" />
-        <activity
-            android:name=".userpage.WeightFragment"
-            android:exported="true" />
-        <activity
-            android:name=".customdialog"
-            android:exported="true" />
+
         <activity
             android:name=".userpage.UserActivity"
             android:exported="true" />

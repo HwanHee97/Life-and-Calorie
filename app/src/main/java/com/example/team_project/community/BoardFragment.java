@@ -17,39 +17,55 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.example.team_project.R;
+import com.example.team_project.community.adapter.RecyclerAdapter;
+import com.example.team_project.community.itemclass.RecyclerItem;
+import com.example.team_project.community.retrofit.CommunityRetrofitInterface;
+import com.example.team_project.community.retrofit.RetrofitClient;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class BoardFragment extends Fragment implements View.OnClickListener {
     final static int REQUEST_CODE_ADD = 1;
     RecyclerView community_RecyclerView = null;
-    RecyclerAdapter RecyclerAdapter = null;
-    ArrayList<RecyclerItem> community_List = new ArrayList<RecyclerItem>();
-    CONN_SERVER_COMMUNITY task;
+    com.example.team_project.community.adapter.RecyclerAdapter RecyclerAdapter = null;
+    ArrayList<RecyclerItem> community_List ;
     String list_index;
     ProgressBar progressBar;
-    Button btn_addPage;
+    ImageView btn_img_addPage;
     boolean mLockListView = false;  // 데이터 불러올때 중복안되게 하기위한 변수
+    ViewGroup rootView;
+    CommunityRetrofitInterface server = new RetrofitClient().retrofit.create(CommunityRetrofitInterface.class);
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //프래그먼트 메뉴를 인플레이트해주고 컨테이너에 붙여달라는 뜻임
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_board, container, false);
+        rootView = (ViewGroup) inflater.inflate(R.layout.fragment_board, container, false);
+        init();
+        list_index = "0";
+        showCommunityList(list_index);
+        return rootView;
+    }
+    public void init() {
         community_RecyclerView = rootView.findViewById(R.id.Recycler);
         progressBar = (ProgressBar) rootView.findViewById(R.id.progressbar);
-        btn_addPage = (Button) rootView.findViewById(R.id.btn_addPage);
-        btn_addPage.setOnClickListener(this);
+        btn_img_addPage = (ImageView) rootView.findViewById(R.id.board_iv_addPage);
+        btn_img_addPage.setOnClickListener(this);
         progressBar.setVisibility(View.GONE);
         // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
+        community_List = new ArrayList<RecyclerItem>();
         RecyclerAdapter = new RecyclerAdapter(community_List);
         community_RecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), 1));//구분선 넣기
         community_RecyclerView.setAdapter(RecyclerAdapter);//어댑터 설정
@@ -64,7 +80,7 @@ public class BoardFragment extends Fragment implements View.OnClickListener {
                     Log.i("lhh", "End of list");
                     progressBar.setVisibility(View.VISIBLE);
                     mLockListView = true;
-                    Show_CommunityList(list_index);
+                    showCommunityList(list_index);
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -78,25 +94,32 @@ public class BoardFragment extends Fragment implements View.OnClickListener {
                 }
             }
         });
-        list_index = "0";
-        Show_CommunityList(list_index);
-        return rootView;
+
     }
 
-    public void Show_CommunityList(String index) {//커뮤니티 글가져오는 함수
-        task = new CONN_SERVER_COMMUNITY();
-        try {
-            make_communityArraryList(task.execute("show", index).get());
-            list_index = Integer.parseInt(index) + 10 + "";
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public void showCommunityList(String index) {//커뮤니티 글가져오는 함수
+        Call<String> call = server.showCommunity(index);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+                    //Log.i("lhh", response.body().toString());
+                    makeCommunityArraryList(response.body().toString());
+                    RecyclerAdapter.notifyDataSetChanged();//변경여부 최신화
+                } else {
+                    Log.i("lhh", "실패");
+                }
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.i("lhh", "실패" + t.getMessage());
+            }
+        });
+        list_index = Integer.parseInt(index) + 10 + "";
     }
 
-    public void make_communityArraryList(String str_json) {
-        Log.i("lhh", " <<<<<데이터 json->Arrarylist>>>> ");
+    public void makeCommunityArraryList(String str_json) {
+        Log.i("lhh", " <<<<<게시판 데이터 json->Arrarylist>>>> ");
         try {
             int count = 0;
             JSONArray jarray = new JSONObject(str_json).getJSONArray("List");//str_json라는 json형식의 문자열을 json객체로 만들고 json배열로 만든다.
@@ -111,7 +134,6 @@ public class BoardFragment extends Fragment implements View.OnClickListener {
                 community_List.add(new RecyclerItem(_ID, title, text, date, writer_ID));
                 count++;
             }
-            RecyclerAdapter.notifyDataSetChanged();//변경여부 최신화
         } catch (Exception e) {
             Log.e("lhh", e.getMessage());
         }
@@ -124,8 +146,23 @@ public class BoardFragment extends Fragment implements View.OnClickListener {
             if (resultCode == RESULT_OK) {
                 RecyclerItem tmp_item = (RecyclerItem) data.getSerializableExtra("community_item");
                 community_List.add(tmp_item);
-                task = new CONN_SERVER_COMMUNITY();
-                task.execute("community_insert", tmp_item.getTitle(), tmp_item.getText(), tmp_item.getWriter_ID());
+                //레트로 핏을통해 서버로 DB에 저장할 게시글 정보 넘긴다.
+                Call<String> call = server.insertCommunity(tmp_item.getTitle(), tmp_item.getText(), tmp_item.getWriter_ID());
+                call.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if (response.isSuccessful()) {
+                            Log.i("lhh", response.body().toString());
+                            RecyclerAdapter.notifyDataSetChanged();//변경여부 최신화
+                        } else {
+                            Log.i("lhh", "실패");
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Log.i("lhh", "실패" + t.getMessage());
+                    }
+                });
                 RecyclerAdapter.notifyDataSetChanged();
             }
         }

@@ -4,18 +4,18 @@ public class UserData {
     private String foodName;
     private String calorie;
     private String date;
-    private String weight;
+
     UserData(){
         this.foodName = "";
         this.calorie = "";
         this.date = "";
-        this.weight = "";
+
     }
-    UserData(String foodName, String calorie, String date, String weight){
+    UserData(String foodName, String calorie, String date){
         this.foodName = foodName;
         this.calorie = calorie;
         this.date = date;
-        this.weight = weight;
+
     }
     public String getFoodName() {
         return foodName;
@@ -41,11 +41,4 @@ public class UserData {
         this.date = date;
     }
 
-    public String getWeight() {
-        return weight;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
-    }
 }

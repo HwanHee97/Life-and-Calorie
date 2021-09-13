@@ -28,21 +28,21 @@ public class UserActivity extends AppCompatActivity {
         tv_id.setText("사용자 이름 : " + pref.getString("nickname",""));
         tv_calorie.setText("설정 몸무게 : " + pref.getInt( "weight",0) + ", 설정 칼로리 : " + pref.getInt("calorie",0));
 
-        findViewById(R.id.btn_bookmark).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.user_iv_bookmark).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentView(frag_Bookmark);
             }
         });
 
-        findViewById(R.id.btn_calorie).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.user_iv_calorie).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentView(frag_Calorie);
             }
         });
 
-        findViewById(R.id.btn_weight).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.user_iv_weight).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentView(frag_Weight);

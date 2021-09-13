@@ -16,7 +16,8 @@
             android:id="@+id/btn_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/user" />
+            android:src="@drawable/ic_baseline_person_24"
+            android:backgroundTint="#D0DD97"/>
     </LinearLayout>
 
     <LinearLayout
@@ -25,29 +26,34 @@
         android:orientation="horizontal"
         android:id="@+id/ll2"
         android:layout_below="@id/ll1">
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="검색"
-            android:textSize="30sp"
-            android:id="@+id/tv_search"
+            android:id="@+id/activity_iv_search"
             android:gravity="center"
+            android:src="@drawable/ic_baseline_search_40"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_iv_calendar"
+            android:gravity="center"
+            android:src="@drawable/ic_baseline_calendar_today_40"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/activity_iv_board"
+            android:src="@drawable/ic_baseline_article_40"
             android:layout_weight="1"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="달력"
-            android:textSize="30sp"
-            android:id="@+id/tv_calendar"
-            android:gravity="center"
-            android:layout_weight="1"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="게시판"
+            android:text="GPS"
             android:textSize="30sp"
             android:gravity="center"
-            android:id="@+id/tv_board"
+            android:id="@+id/tv_gps"
             android:layout_weight="1"/>
     </LinearLayout>
 

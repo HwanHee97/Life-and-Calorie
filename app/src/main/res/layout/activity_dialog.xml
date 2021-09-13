@@ -22,7 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/dialog_tv_title"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="15dp">
 
         <TextView
             android:id="@+id/dialog_tv_foodname1"
@@ -44,7 +45,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/dialog_ll_foodkcal"
         android:layout_below="@id/dialog_ll_foodname"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="15dp">
 
         <TextView
             android:id="@+id/dialog_tv_kcal1"
@@ -61,23 +63,45 @@
             android:layout_weight="1"
             android:id="@+id/dialog_tv_kcal2"/>
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/dialog_ll_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dialog_ll_date"
         android:layout_below="@id/dialog_ll_foodkcal"
-        android:orientation="vertical">
-        <CalendarView
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/dialog_tv_date1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/dialog_calendar"/>
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="날짜"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/dialog_tv_date2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/dialog_iv_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_baseline_today_30" />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ll_count"
         android:layout_below="@id/dialog_ll_date"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="15dp">
         <TextView
             android:id="@+id/dialog_tv_count1"
             android:layout_width="match_parent"
@@ -91,6 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:inputType="number"
             android:id="@+id/dialog_et_count2"/>
     </LinearLayout>
 
@@ -103,8 +128,8 @@
         android:orientation="horizontal"
         android:weightSum="3"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true">
+        android:layout_below="@id/ll_count"
+        >
 
         <TextView
             android:id="@+id/dialog_tv_negative"

@@ -14,25 +14,26 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_food"
         android:textSize="20dp"
-        android:layout_alignBaseline="@id/btn_remove"
+        android:layout_alignBaseline="@id/iv_remove"
         android:text="TEXT" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/btn_remove"
+        android:layout_toLeftOf="@+id/iv_remove"
         android:id="@+id/tv_calorie"
-        android:layout_alignBaseline="@id/btn_remove"
+        android:layout_alignBaseline="@id/iv_remove"
         android:textSize="20dp"
         android:layout_marginRight="20dp"
         android:text="TEXT" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_remove"
-        android:layout_alignParentRight="true"
-        android:onClick="onClickRemove"
-        android:text="remove"/>
+
+        <ImageView
+            android:id="@+id/iv_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="onClickRemove"
+            android:src="@drawable/ic_baseline_remove_circle_30" />
     </RelativeLayout>
     <View
         android:layout_width="match_parent"

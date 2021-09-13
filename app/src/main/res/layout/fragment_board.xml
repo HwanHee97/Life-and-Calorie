@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".community.BoardFragment">
+    tools:context=".community.BoardFragment"
+    android:background="#F8FAE4">
 
 
     <LinearLayout
@@ -12,12 +13,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
+        <ImageView
             android:layout_gravity="right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_addPage"
-            android:text="글쓰기"
+            android:id="@+id/board_iv_addPage"
+            android:src="@drawable/ic_baseline_border_color_40"
             />
 
         <androidx.recyclerview.widget.RecyclerView

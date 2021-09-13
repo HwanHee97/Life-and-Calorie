@@ -13,6 +13,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.team_project.R;
+import com.example.team_project.community.adapter.CommentAdapter;
+import com.example.team_project.community.itemclass.Community_Comment_Item;
+import com.example.team_project.community.itemclass.RecyclerItem;
+import com.example.team_project.community.retrofit.CommunityRetrofitInterface;
+import com.example.team_project.community.retrofit.RetrofitClient;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,24 +25,34 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.concurrent.ExecutionException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ShowWriting extends AppCompatActivity {
     TextView title;
     TextView date;
     TextView writerID;
     TextView text;
-    CONN_SERVER_COMMUNITY task;
+
     ListView comment_listview;
     ArrayList<Community_Comment_Item> comment_ArrayList;
     ArrayAdapter<Community_Comment_Item> comment_adapter;
     String _ID = "";
     String user_nickname="";
+    CommunityRetrofitInterface server = new RetrofitClient().retrofit.create(CommunityRetrofitInterface.class);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_writing);
 
+        init();
+        showCommunityCommentList();//댓글 리스트 불러와서 출력한다.
+    }
+
+    public void init(){
         SharedPreferences pref = getSharedPreferences("sharedpreferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         user_nickname=pref.getString("nickname", "Unknown") ;
@@ -61,22 +76,30 @@ public class ShowWriting extends AppCompatActivity {
         writerID.setText(item.getWriter_ID());
         text.setText(item.getText());
 
-        Show_Community_CommentList();//댓글 리스트 불러와서 출력한다.
+
     }
 
-    public void Show_Community_CommentList() {//커뮤니티 글가져오는 함수
-        task = new CONN_SERVER_COMMUNITY();
-        try {
-            make_community_comment_ArraryList(task.execute("comment_show", _ID).get());
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public void showCommunityCommentList() {//커뮤니티 글가져오는 함수
+        Call<String> call = server.commentShow(_ID);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+                    makeCommunityCommentArraryList(response.body().toString());
+                    comment_adapter.notifyDataSetChanged();
+                } else {
+                    Log.i("lhh", "실패");
+                }
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.i("lhh", "실패" + t.getMessage());
+            }
+        });
     }
 
-    public void make_community_comment_ArraryList(String str_json) {
-        Log.i("lhh", " <<<<<데이터 json->Arrarylist>>>> ");
+    public void makeCommunityCommentArraryList(String str_json) {
+        Log.i("lhh", " <<<<<게시판댓글 데이터 json->Arrarylist>>>> ");
         try {
             int count = 0;
             JSONArray jarray = new JSONObject(str_json).getJSONArray("List");//str_json라는 json형식의 문자열을 json객체로 만들고 json배열로 만든다.
@@ -95,7 +118,7 @@ public class ShowWriting extends AppCompatActivity {
         }
     }
 
-    public void add_Comment(View v) {
+    public void addComment(View v) {
         EditText comment_et = (EditText) findViewById(R.id.add_comment_et);
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -103,8 +126,21 @@ public class ShowWriting extends AppCompatActivity {
 
         comment_ArrayList.add(new Community_Comment_Item(comment_et.getText().toString(), today, user_nickname));
         //서버로 댓글,낳짜, 글쓴이 넘겨서 디비에 추가하는 함수
-        task = new CONN_SERVER_COMMUNITY();
-        task.execute("comment_insert", _ID, comment_et.getText().toString(), today, user_nickname);
+        Call<String> call = server.commentInsert(_ID, comment_et.getText().toString(), today, user_nickname);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+                    comment_adapter.notifyDataSetChanged();
+                } else {
+                    Log.i("lhh", "실패");
+                }
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.i("lhh", "실패" + t.getMessage());
+            }
+        });
         comment_et.setText("");
     }
 }

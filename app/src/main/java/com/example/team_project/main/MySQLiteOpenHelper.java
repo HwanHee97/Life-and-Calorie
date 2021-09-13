@@ -15,9 +15,12 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     //사용중인 DB가 없을 때 호출
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE Bookmark (bookmark_food TEXT, bookmark_kcal TEXT);");
-        sqLiteDatabase.execSQL("CREATE TABLE Report (report_food TEXT, report_kcal TEXT);");
-        Log.i("minhxxk", "데이터베이스와 테이블이 생성되었습니다.");
+        sqLiteDatabase.execSQL("CREATE TABLE if not exists Bookmark (bookmark_food TEXT, bookmark_kcal TEXT);");
+        sqLiteDatabase.execSQL("CREATE TABLE if not exists Report (report_food TEXT, report_kcal TEXT);");
+        sqLiteDatabase.execSQL("CREATE TABLE if not exists Weight (date TEXT, weight TEXT);");
+        String sql = "CREATE TABLE if not exists USERDATA (_id integer primary key autoincrement,FoodName text, Calorie text, DATE text);";
+        sqLiteDatabase.execSQL(sql);
+
     }
 
     //onUpdate()는 사용중인 코드의 버전이 바뀐 경우 호출

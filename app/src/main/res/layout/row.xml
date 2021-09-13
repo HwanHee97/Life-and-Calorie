@@ -31,6 +31,7 @@
         android:text="신고"
         android:id="@+id/btn_report"
         android:src="@drawable/siren"
+        android:backgroundTint="#F8FAE4"
         android:onClick="onClickReport"/>
 
 </LinearLayout>
