@@ -13,6 +13,21 @@
         android:theme="@style/Theme.Team_Project"
         android:usesCleartextTraffic="true">
 
+
+        <receiver
+            android:name=".WidgetProvider"
+            android:exported="true"
+            android:label="위젯 테스트 (일반)">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_basic" />
+        </receiver>
+
         <activity
             android:name=".userpage.UserActivity"
             android:exported="true" />

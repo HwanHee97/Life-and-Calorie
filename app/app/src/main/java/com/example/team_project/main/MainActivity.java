@@ -1,24 +1,24 @@
 package com.example.team_project.main;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.team_project.community.BoardFragment;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.team_project.R;
-import com.example.team_project.userpage.UserActivity;
+import com.example.team_project.WidgetProvider;
 import com.example.team_project.calendar_fragment.CalendarFragment;
-import com.example.team_project.main.GPSFragment;
+import com.example.team_project.community.BoardFragment;
+import com.example.team_project.userpage.UserActivity;
 
-import org.w3c.dom.Text;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
     //프래그먼트는  xml레이아웃 파일 하나랑 자바소스 파일 하나로 정의할 수 있다.
     //이게 하나의 뷰처럼 쓸 수 있는데 뷰하고 약간 다른특성들이 있다.
     //엑티비티를 본떠 만들었기 떄문에 프래그먼트 매니저가 소스코드에서 담당한다.
@@ -86,5 +86,16 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, GPSfragment).commit();/*프래그먼트 매니저가 프래그먼트를 담당한다!*/
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        Log.i("lhh","onpause");
+        super.onPause();
+        Intent widgetIntent = new Intent(this, WidgetProvider.class);
+        widgetIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE); // 위젯 업데이트 액션
+        this.sendBroadcast(widgetIntent); // 브로드캐스팅
+
+
     }
 }
