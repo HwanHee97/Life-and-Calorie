@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAE4"
+    android:orientation="vertical"
+    tools:context="com.example.life_and_calorie.main.LoginActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="301dp"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="219dp"
+            android:layout_height="199dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/life_and_calorie" />
+
+
+    </RelativeLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:columnCount="2"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:background="@drawable/round_bg2"
+            android:text="LOGIN"
+            android:textAlignment="center"
+            android:textColor="#D0DD97"
+            android:padding="10dp"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_columnWeight="2"
+            android:layout_gravity="center_vertical"
+            android:adjustViewBounds="true"
+            android:background="#D0DD97"
+            android:baselineAlignBottom="true"
+            android:src="@drawable/ic_baseline_person_24" />
+
+        <EditText
+            android:id="@+id/et_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_columnWeight="6"
+            android:textColor="#658361"
+            android:backgroundTint="#658361"
+            android:singleLine="true"
+            android:hint="닉네임" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_vertical"
+            android:adjustViewBounds="true"
+            android:background="#D0DD97"
+            android:src="@drawable/ic_round_accessibility_24" />
+
+        <EditText
+            android:id="@+id/et_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:backgroundTint="#658361"
+            android:hint="목표 몸무게"
+            android:singleLine="true"
+            android:textColor="#658361"
+            android:inputType="numberDecimal" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_vertical"
+            android:adjustViewBounds="true"
+            android:background="#D0DD97"
+            android:src="@drawable/ic_round_restaurant_24" />
+
+        <EditText
+            android:id="@+id/et_calorie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:backgroundTint="#658361"
+            android:hint="목표 칼로리"
+            android:textColor="#658361"
+            android:singleLine="true"
+            android:inputType="number" />
+
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_row="4"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/round_bg"
+            android:onClick="onClickLogin"
+            android:textColor="#D0DD97"
+            android:textSize="20dp"
+            android:text="SIGN IN" />
+
+
+    </GridLayout>
+</LinearLayout>

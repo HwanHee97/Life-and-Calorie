@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="40dp"
+    android:background="#F8FAE4"
+    tools:context="com.example.life_and_calorie.main.IntroActivity">
+
+    <ImageView
+        android:id="@+id/iv_cal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/life_and_calorie" />
+
+    <ProgressBar
+        android:id="@+id/pb"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_cal"
+        android:max="50"
+        android:backgroundTint="#658361"
+        android:progress="0" />
+
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pb"
+        android:layout_centerInParent="true"
+        android:text="Life &amp; Calorie"
+        android:textColor="#658361"
+        android:textStyle="bold"
+        android:textSize="30dp" />
+
+</RelativeLayout>

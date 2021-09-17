@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F8FAE4">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_round_navigate_before_24"
+        android:text="이전달"
+        android:backgroundTint="#F8FAE4"
+        android:id="@+id/btn_before"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_year_month_picker"
+        android:src="@drawable/ic_baseline_today_30"
+        android:layout_gravity="center" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이후달"
+        android:backgroundTint="#F8FAE4"
+        android:src="@drawable/ic_round_navigate_next_24"
+        android:id="@+id/btn_after"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/tv_year"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="년"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/tv_month"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="월"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginRight="10dp"/>
+
+
+    </LinearLayout>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/round_bg2"
+        android:id="@+id/LineChart" />
+</LinearLayout>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/dialog_rl"
+    android:background="@drawable/round_bg4">
+
+    <TextView
+        android:id="@+id/dialog_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/round_bg2"
+        android:gravity="center"
+        android:paddingEnd="10dp"
+        android:text="음식 추가"
+        android:textColor="#F8FAE4"
+        android:textSize="30dp" />
+
+    <LinearLayout
+        android:id="@+id/dialog_ll_foodname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_tv_title"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/dialog_tv_foodname1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="음식명"
+            android:textColor="#658361"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/dialog_tv_foodname2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:textSize="15dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dialog_ll_foodkcal"
+        android:layout_below="@id/dialog_ll_foodname"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/dialog_tv_kcal1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="칼로리"
+            android:paddingLeft="20dp"
+            android:textSize="15dp"
+            android:textColor="#658361"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="15dp"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/dialog_tv_kcal2"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dialog_ll_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_ll_foodkcal"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/dialog_tv_date1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="날짜"
+            android:textColor="#658361"
+            android:textSize="15dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+        <TextView
+            android:id="@+id/dialog_tv_date2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:textSize="15dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/dialog_iv_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:src="@drawable/ic_baseline_today_30" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_ll_date"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/dialog_tv_count1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="수량"
+            android:textColor="#658361"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/dialog_et_count2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="1"
+            android:inputType="number"
+            android:backgroundTint="#658361"
+            android:gravity="center_vertical"
+            android:textSize="15dp"
+            android:textColor="#658361"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:minHeight="56dp"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/ll_count"
+        >
+
+        <TextView
+            android:id="@+id/dialog_tv_negative"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/round_left_bottom"
+            android:textColor="#F8FAE4"
+            android:text="취소"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/dialog_tv_positive"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@drawable/round_right_bottom"
+            android:gravity="center"
+            android:text="저장"
+            android:textColor="#F8FAE4"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

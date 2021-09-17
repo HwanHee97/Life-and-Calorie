@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:descendantFocusability="blocksDescendants">
+<!--    <ToggleButton-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text=""-->
+<!--        android:id="@+id/btn_bookmark"-->
+<!--        android:onClick="onCLickBookmark"/>-->
+    <CheckBox
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/cb_bookmark"
+        android:button="@drawable/bookmark"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="#658361"
+        android:id="@+id/tv_foodname"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:textColor="#658361"
+        android:id="@+id/tv_foodcalorie"/>
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="신고"
+        android:id="@+id/btn_report"
+        android:src="@drawable/ic_round_warning_24"
+        android:backgroundTint="#F8FAE4"
+        android:onClick="onClickReport"/>
+
+</LinearLayout>
