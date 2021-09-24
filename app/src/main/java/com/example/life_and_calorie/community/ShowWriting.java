@@ -76,7 +76,6 @@ public class ShowWriting extends AppCompatActivity {
         writerID.setText(item.getWriter_ID());
         text.setText(item.getText());
 
-
     }
 
     public void showCommunityCommentList() {//커뮤니티 글가져오는 함수
