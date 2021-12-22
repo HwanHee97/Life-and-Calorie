@@ -15,3 +15,5 @@
 
 # 위젯 기능
   하루섭취 칼로리, 목표칼로리, 남은 칼로리, 새로고침 버튼
+
+노션: https://sapphire-chord-3ac.notion.site/Life-Calorie-6522eacd6cdf4230b27509821a217ced
